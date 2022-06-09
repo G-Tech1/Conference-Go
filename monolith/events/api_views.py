@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
@@ -228,3 +229,23 @@ def api_show_location(request, pk):
             encoder=LocationDetailEncoder,
             safe=False,
         )
+
+
+@require_http_methods(["GET"])
+def api_list_states(request):
+    # get the states from the database ordered by name
+    states = State.objects.all().order_by('name')
+    # Create an empty list named state_list
+    state_list = []
+    # For each state in states from database:
+    for state in states:
+        # create a dictionary that contains the name and abbreviation for each state
+        dic =({
+            "name": state.name,
+            "abbreviation": state.abbreviation 
+            })
+        # append the dictionary to the list
+        state_list.append(dic)
+    return JsonResponse({"states": state_list})
+
+        
