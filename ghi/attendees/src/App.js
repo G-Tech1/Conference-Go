@@ -1,37 +1,41 @@
 import Nav from "./Nav";
 
+
 function App(props) {
   if (props.attendees === undefined) {
     return null;
   }
-  return (
-    <div className="container">
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Conference</th>
-        </tr>
-      </thead>
-      <tbody>
-        {/* for (let attendee of props.attendees) {
+    return (
+      <div>
+      <Nav />
+      <div className="container">
+      <table className="table table-striped">
+        <thead>
           <tr>
-            <td>{ attendee.name }</td>
-            <td>{ attendee.conference }</td>
+            <th>Name</th>
+            <th>Conference</th>
           </tr>
-        } */}
-        {props.attendees.map(attendee => {
-          return (
-            <tr key={attendee.href}>
-              <td>{attendee.name}</td>
-              <td>{attendee.conference}</td>
+        </thead>
+        <tbody>
+          {/* for (let attendee of props.attendees) {
+            <tr>
+              <td>{ attendee.name }</td>
+              <td>{ attendee.conference }</td>
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
-    </div>
-  );
-}
+          } */}
+          {props.attendees.map(attendee => {
+            return (
+              <tr key={attendee.href}>
+                <td>{attendee.name}</td>
+                <td>{attendee.conference}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      </div>
+      </div>
+    );
+};
 
 export default App;
