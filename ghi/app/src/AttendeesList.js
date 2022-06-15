@@ -1,15 +1,9 @@
-import Nav from "./Nav";
+import React from "react";
 
 
-function App(props) {
-  if (props.attendees === undefined) {
-    return null;
-  }
+function AttendeeList(props) {
     return (
-      <div>
-      <Nav />
-      <div className="container">
-      <table className="table table-striped">
+        <table className="table table-striped">
         <thead>
           <tr>
             <th>Name</th>
@@ -33,9 +27,7 @@ function App(props) {
           })}
         </tbody>
       </table>
-      </div>
-      </div>
     );
 };
 
-export default App;
+export default AttendeeList;
